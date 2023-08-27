@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "configurations": [
         {
-            "name": "C++ Launch",
+            "name": "Default debug settings",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/build/app", //if you compile with make use this path
