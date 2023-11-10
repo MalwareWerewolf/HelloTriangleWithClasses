@@ -12,7 +12,6 @@
                 "-g",
                 "-I${workspaceFolder}/include/",
                 "-L${workspaceFolder}/lib/",
-                "${workspaceFolder}/lib/libglfw.3.3.dylib",
                 "${workspaceFolder}/src/*.cpp",
                 "${workspaceFolder}/src/glad.c",
                 "-o",
@@ -27,7 +26,8 @@
                 "CoreVideo",
                 "-framework",
                 "CoreFoundation",
-                "-Wno-deprecated"
+                "-Wno-deprecated",
+                "-lglfw.3.3"
             ],
             "options": {
                 "cwd": "${fileDirname}",
