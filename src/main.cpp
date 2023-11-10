@@ -18,7 +18,7 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("../shaders/3.3.shader.vs", "../shaders/3.3.shader.fs");
+    Shader ourShader("./shaders/3.3.shader.vs", "./shaders/3.3.shader.fs");
 
     std::vector<float> vertices = {
         // positions         // colors
