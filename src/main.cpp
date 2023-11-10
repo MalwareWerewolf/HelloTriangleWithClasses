@@ -30,13 +30,14 @@ int main()
     shader.deleteShaders(shaders);
 
     std::vector<float> vertices = {
-        -0.5f, -0.5f, 0.0f, // left
-        0.5f, -0.5f, 0.0f, // right
-        0.0f, 0.5f, 0.0f // top
+        // positions         // colors
+        0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom right
+        -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // bottom left
+        0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f // top
     };
 
     Vertex vertex(1, vertices);
-    vertex.InitializeVertexArrayAndBufferObject();
+    vertex.initializeVertexArrayAndBufferObject();
 
     RenderLoop renderLoop;
     renderLoop.render(
@@ -44,7 +45,7 @@ int main()
         shaderProgram.getProgramID(),
         vertex.getVAO());
 
-    vertex.DeAllocateResources();
+    vertex.deAllocateResources();
     shaderProgram.DeAllocateShaderProgram();
 
     glfwTerminate();

@@ -16,8 +16,8 @@ public:
 
     unsigned int getVAO() const;
 
-    void InitializeVertexArrayAndBufferObject();
-    void DeAllocateResources();
+    void initializeVertexArrayAndBufferObject();
+    void deAllocateResources();
 };
 
 #endif

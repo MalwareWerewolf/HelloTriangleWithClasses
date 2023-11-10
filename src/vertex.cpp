@@ -11,7 +11,7 @@ unsigned int Vertex::getVAO() const
     return VAO;
 }
 
-void Vertex::InitializeVertexArrayAndBufferObject()
+void Vertex::initializeVertexArrayAndBufferObject()
 {
     glGenVertexArrays(numberOfVertices, &VAO);
     glGenBuffers(numberOfVertices, &VBO);
@@ -21,8 +21,12 @@ void Vertex::InitializeVertexArrayAndBufferObject()
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) * sizeof(float), vertices.data(), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -32,7 +36,7 @@ void Vertex::InitializeVertexArrayAndBufferObject()
     glBindVertexArray(0);
 }
 
-void Vertex::DeAllocateResources()
+void Vertex::deAllocateResources()
 {
     if (VAO > 0 && VBO > 0) {
         glDeleteVertexArrays(numberOfVertices, &VAO);
