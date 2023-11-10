@@ -17,7 +17,7 @@ void RenderLoop::render(GLFWwindow* window,
 
         // be sure to activate the shader
         glUseProgram(shaderProgram);
-    
+
         // update the uniform color
         float timeValue = glfwGetTime();
         float greenValue = sin(timeValue) / 2.0f + 0.5f;
@@ -27,7 +27,7 @@ void RenderLoop::render(GLFWwindow* window,
         // now render the triangle
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
-    
+
         // swap buffers and poll IO events
         glfwSwapBuffers(window);
         glfwPollEvents();

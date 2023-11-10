@@ -2,12 +2,33 @@
 #define SHADER_H
 
 #include "config.h"
-#include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 class Shader {
+private:
+    void checkCompileErrors(unsigned int shader, std::string type);
+
 public:
-    unsigned int createShader(GLenum shaderType, const char* shaderSource);
-    void deleteShaders(const std::vector<GLuint>& shaderIDs);
+    unsigned int ID;
+
+    // constructor generates the shader on the fly
+    // ------------------------------------------------------------------------
+    Shader(const char* vertexPath, const char* fragmentPath);
+
+    // activate the shader
+    // ------------------------------------------------------------------------
+    void use();
+
+    // utility uniform functions
+    // ------------------------------------------------------------------------
+    void setBool(const std::string& name, bool value) const;
+    // ------------------------------------------------------------------------
+    void setInt(const std::string& name, int value) const;
+    // ------------------------------------------------------------------------
+    void setFloat(const std::string& name, float value) const;
 };
 
 #endif /* shader_h */
