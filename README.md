@@ -8,4 +8,4 @@ A simple triangle rendering with OpenGL on macOS using C++ classes.
 $ brew install glfw
 ```
 
-1. Use VSCode to compile the code or `make`
+2. Use VSCode to compile by pressing `CMD + SHIFT + B` or `make`
