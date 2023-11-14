@@ -1,5 +1,5 @@
 #include "initialization.h"
-#include "renderLoop.h"
+#include "render_loop.h"
 #include "shader.h"
 #include "window.h"
 #include "vertex.h"

@@ -4,13 +4,13 @@
 #include "config.h"
 
 class Window {
-private:
-    unsigned int width {};
-    unsigned int height {};
-
 public:
     Window(unsigned int width, unsigned int height);
     GLFWwindow* createWindow();
+
+private:
+    unsigned int width {};
+    unsigned int height {};
 };
 
 #endif /* window_h */

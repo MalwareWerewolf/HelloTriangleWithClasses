@@ -8,9 +8,6 @@
 #include <iostream>
 
 class Shader {
-private:
-    void checkCompileErrors(unsigned int shader, std::string type);
-
 public:
     unsigned int ID;
 
@@ -29,6 +26,9 @@ public:
     void setInt(const std::string& name, int value) const;
     // ------------------------------------------------------------------------
     void setFloat(const std::string& name, float value) const;
+
+private:
+    void checkCompileErrors(unsigned int shader, std::string type);
 };
 
 #endif /* shader_h */

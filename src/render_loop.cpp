@@ -1,4 +1,4 @@
-#include "renderLoop.h"
+#include "render_loop.h"
 #include <math.h>
 
 void RenderLoop::render(GLFWwindow* window,

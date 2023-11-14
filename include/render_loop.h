@@ -4,13 +4,13 @@
 #include "config.h"
 
 class RenderLoop {
-private:
-    void processInput(GLFWwindow* window);
-
 public:
     void render(GLFWwindow* window,
         const unsigned int shaderProgram,
         const unsigned int VAO);
+
+private:
+    void processInput(GLFWwindow* window);
 };
 
 #endif
