@@ -2,7 +2,7 @@
 #include "window.h"
 #include "shader.h"
 #include "vertex.h"
-#include "render_loop.h"
+#include "render.h"
 #include <vector>
 
 int main()
@@ -30,10 +30,10 @@ int main()
     Vertex vertex(1, vertices);
     vertex.initializeVertexArrayAndBufferObject();
 
-    Texture texture("/Users/davidedolce/Dev/HelloTriangleWithClasses/resources/textures/container.jpg", "/Users/davidedolce/Dev/HelloTriangleWithClasses/resources/textures/awesomeface.png");
+    Texture texture("resources/textures/container.jpg", "resources/textures/awesomeface.png");
 
-    RenderLoop renderLoop;
-    renderLoop.render(
+    Render render;
+    render.renderLoop(
         glfwWindow,
         ourShader,
         texture,

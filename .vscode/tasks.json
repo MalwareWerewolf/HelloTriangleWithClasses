@@ -11,6 +11,8 @@
                 "-Wall",
                 "-g",
                 "-I${workspaceFolder}/include/",
+                "-I/opt/homebrew/include",
+                "-L/opt/homebrew/lib",
                 "-L${workspaceFolder}/lib/",
                 "${workspaceFolder}/src/*.cpp",
                 "${workspaceFolder}/src/glad.c",
@@ -27,7 +29,9 @@
                 "-framework",
                 "CoreFoundation",
                 "-Wno-deprecated",
-                "-lglfw.3.3"
+                "-lglfw.3.3",
+                "-lboost_system", // Link against the Boost.System library
+                "-lboost_filesystem" // Link against the Boost.Filesystem library
             ],
             "options": {
                 "cwd": "${fileDirname}",

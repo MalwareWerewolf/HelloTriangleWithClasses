@@ -1,8 +1,8 @@
-#include "render_loop.h"
+#include "render.h"
 #include "shader.h"
 #include <math.h>
 
-void RenderLoop::render(GLFWwindow* window,
+void Render::renderLoop(GLFWwindow* window,
     Shader& shader,
     Texture& texture,
     const unsigned int VAO)
@@ -41,7 +41,7 @@ void RenderLoop::render(GLFWwindow* window,
     }
 }
 
-void RenderLoop::processInput(GLFWwindow* window)
+void Render::processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
