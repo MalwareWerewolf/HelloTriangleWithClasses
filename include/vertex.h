@@ -1,7 +1,6 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
-#include "config.h"
 #include <vector>
 
 class Vertex {
@@ -16,8 +15,9 @@ public:
 private:
     unsigned int numberOfVertices {};
     const std::vector<float>& vertices {};
-    unsigned int VBO {};
     unsigned int VAO {};
+    unsigned int VBO {};
+    unsigned int EBO {};
 };
 
 #endif

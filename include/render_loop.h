@@ -1,12 +1,16 @@
 #ifndef RENDER_LOOP_H
 #define RENDER_LOOP_H
 
-#include "config.h"
+#include "shader.h"
+#include "texture.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 class RenderLoop {
 public:
     void render(GLFWwindow* window,
-        const unsigned int shaderProgram,
+        Shader& shader,
+        Texture& texture,
         const unsigned int VAO);
 
 private:

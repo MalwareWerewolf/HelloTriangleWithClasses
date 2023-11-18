@@ -63,7 +63,10 @@
         "chrono": "cpp",
         "compare": "cpp",
         "concepts": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "charconv": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp"
     },
     "cmake.configureOnOpen": false,
     "editor.renderWhitespace": "all"

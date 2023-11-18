@@ -1,8 +1,6 @@
 #ifndef INITIALIZATION_H
 #define INITIALIZATION_H
 
-#include "config.h"
-
 class Initialization {
 public:
     void initializeOpenGL();
