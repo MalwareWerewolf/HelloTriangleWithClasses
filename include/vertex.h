@@ -5,16 +5,14 @@
 
 class Vertex {
 public:
-    Vertex(unsigned int numberOfVertices, const std::vector<float>& vertices);
+    Vertex(unsigned int numberOfVertices, const std::vector<float>& vertices, const std::vector<int>& indices);
 
     unsigned int getVAO() const;
 
-    void initializeVertexArrayAndBufferObject();
     void deAllocateResources();
 
 private:
     unsigned int numberOfVertices {};
-    const std::vector<float>& vertices {};
     unsigned int VAO {};
     unsigned int VBO {};
     unsigned int EBO {};

@@ -27,9 +27,12 @@ int main()
         -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f // top left
     };
 
-    Vertex vertex(1, vertices);
-    vertex.initializeVertexArrayAndBufferObject();
+    std::vector<int> indices = {
+        0, 1, 3, // first triangle
+        1, 2, 3 // second triangle
+    };
 
+    Vertex vertex(1, vertices, indices);
     Texture texture("resources/textures/container.jpg", "resources/textures/awesomeface.png");
 
     Render render;
