@@ -1,8 +1,8 @@
-#include "initialization.h"
-#include "window.h"
-#include "shader.h"
-#include "vertex.h"
-#include "render.h"
+#include "initialization.hpp"
+#include "window.hpp"
+#include "shader.hpp"
+#include "vertex.hpp"
+#include "render.hpp"
 #include <vector>
 
 int main()
@@ -20,11 +20,11 @@ int main()
     Shader ourShader("./shaders/3.3.shader.vs", "./shaders/3.3.shader.fs");
 
     std::vector<float> vertices = {
-        // positions          // colors           // texture coords
-        0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
-        0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
-        -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f // top left
+        // positions          // texture coords
+        0.5f, 0.5f, 0.0f, 1.0f, 1.0f, // top right
+        0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
+        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
+        -0.5f, 0.5f, 0.0f, 0.0f, 1.0f // top left
     };
 
     std::vector<int> indices = {

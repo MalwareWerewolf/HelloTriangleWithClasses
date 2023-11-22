@@ -1,10 +1,9 @@
-#include "vertex.h"
+#include "vertex.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 Vertex::Vertex(unsigned int numberOfVertices, const std::vector<float>& vertices, const std::vector<int>& indices)
 {
-
     glGenVertexArrays(numberOfVertices, &VAO);
     glGenBuffers(numberOfVertices, &VBO);
     glGenBuffers(numberOfVertices, &EBO);
@@ -18,14 +17,11 @@ Vertex::Vertex(unsigned int numberOfVertices, const std::vector<float>& vertices
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertices.size() * sizeof(int), indices.data(), GL_STATIC_DRAW);
 
     // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
     // texture coord attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 }
 
 unsigned int Vertex::getVAO() const

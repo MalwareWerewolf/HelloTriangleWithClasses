@@ -80,7 +80,8 @@
         "random": "cpp",
         "utility": "cpp",
         "format": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "ranges": "cpp"
     },
     "cmake.configureOnOpen": false,
     "editor.renderWhitespace": "all"

@@ -1,4 +1,4 @@
-#include "initialization.h"
+#include "initialization.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 

@@ -1,4 +1,4 @@
-#include "window.h"
+#include "window.hpp"
 
 Window::Window(unsigned int width, unsigned int height)
     : width(width)
