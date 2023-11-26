@@ -1,9 +1,9 @@
 #include "render.hpp"
 #include "shader.hpp"
-#include <cmath>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <cmath>
 
 void Render::renderLoop(GLFWwindow* window,
     Shader& shader,
@@ -16,6 +16,26 @@ void Render::renderLoop(GLFWwindow* window,
     // or set it via the texture class
     shader.setInt("texture2", 1);
 
+    // configure global opengl state
+    // -----------------------------
+    glEnable(GL_DEPTH_TEST);
+
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+
+    glm::vec3 cubePositions[] = {
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        glm::vec3(2.0f, 5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3(2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f, 3.0f, -7.5f),
+        glm::vec3(1.3f, -2.0f, -2.5f),
+        glm::vec3(1.5f, 2.0f, -2.5f),
+        glm::vec3(1.5f, 0.2f, -1.5f),
+        glm::vec3(-1.3f, 1.0f, -1.5f)
+    };
+
     while (!glfwWindowShouldClose(window)) {
         // input
         // -----
@@ -24,7 +44,7 @@ void Render::renderLoop(GLFWwindow* window,
         // render
         // ------
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
 
         // bind textures on corresponding texture units
         glActiveTexture(GL_TEXTURE0);
@@ -32,28 +52,30 @@ void Render::renderLoop(GLFWwindow* window,
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture.texture2);
 
-        // create transformations
-        glm::mat4 transform1 = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-        transform1 = glm::translate(transform1, glm::vec3(0.5f, -0.5f, 0.0f));
-        transform1 = glm::rotate(transform1, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-        // get matrix's uniform location and set matrix
+        // activate shader
         shader.use();
-        unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform1));
 
-        // render container
+        // create transformations
+        glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        glm::mat4 projection = glm::mat4(1.0f);
+        projection = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        // pass transformation matrices to the shader
+        shader.setMat4("projection", projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+        shader.setMat4("view", view);
+
+        // render boxes
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        for (unsigned int i = 0; i < 10; i++) {
+            // calculate the model matrix for each object and pass it to shader before drawing
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
+            shader.setMat4("model", model);
 
-        // second container
-        glm::mat4 transform2 = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-        transform2 = glm::translate(transform2, glm::vec3(-0.5f, 0.5f, 0.0f));
-        // transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-        transform2 = glm::scale(transform2, glm::vec3(0.5f * sin(glfwGetTime()), 0.5f * sin(glfwGetTime()), 0.0f)); // Scale by 50%
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform2));
-
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
