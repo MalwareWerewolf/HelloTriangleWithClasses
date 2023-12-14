@@ -8,13 +8,13 @@
 
 class Render {
 public:
-    void renderLoop(GLFWwindow* window,
+    void RenderLoop(GLFWwindow* window,
         Shader& shader,
         Texture& texture,
         const unsigned int VAO);
 
 private:
-    void processInput(GLFWwindow* window);
+    void ProcessInput(GLFWwindow* window);
 };
 
 #endif

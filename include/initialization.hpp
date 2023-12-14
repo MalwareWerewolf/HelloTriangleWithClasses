@@ -3,8 +3,8 @@
 
 class Initialization {
 public:
-    void initializeOpenGL();
-    void initializeGlad();
+    void InitializeOpenGL();
+    void InitializeGlad();
 };
 
 #endif /* INITIALIZATION_H */

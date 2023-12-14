@@ -2,7 +2,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-void Initialization::initializeOpenGL()
+void Initialization::InitializeOpenGL()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -14,7 +14,7 @@ void Initialization::initializeOpenGL()
 #endif
 }
 
-void Initialization::initializeGlad()
+void Initialization::InitializeGlad()
 {
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         throw "Failed to initialize GLAD";

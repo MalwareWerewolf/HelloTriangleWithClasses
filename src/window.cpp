@@ -6,7 +6,7 @@ Window::Window(unsigned int width, unsigned int height)
 {
 }
 
-GLFWwindow* Window::createWindow()
+GLFWwindow* Window::CreateWindow()
 {
     GLFWwindow* window { glfwCreateWindow(width, height, "LearnOpenGL", NULL, NULL) };
     if (window == NULL) {

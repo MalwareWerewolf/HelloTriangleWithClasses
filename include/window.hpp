@@ -7,7 +7,7 @@
 class Window {
 public:
     Window(unsigned int width, unsigned int height);
-    GLFWwindow* createWindow();
+    GLFWwindow* CreateWindow();
 
 private:
     unsigned int width {};

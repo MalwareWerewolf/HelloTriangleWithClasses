@@ -8,12 +8,12 @@
 int main()
 {
     Initialization initialization;
-    initialization.initializeOpenGL();
+    initialization.InitializeOpenGL();
 
     Window window(800, 600);
-    GLFWwindow* glfwWindow { window.createWindow() };
+    GLFWwindow* glfwWindow { window.CreateWindow() };
 
-    initialization.initializeGlad();
+    initialization.InitializeGlad();
 
     // build and compile our shader program
     // ------------------------------------
@@ -72,13 +72,13 @@ int main()
     Texture texture("resources/textures/container.jpg", "resources/textures/awesomeface.png");
 
     Render render;
-    render.renderLoop(
+    render.RenderLoop(
         glfwWindow,
         ourShader,
         texture,
-        vertex.getVAO());
+        vertex.GetVAO());
 
-    vertex.deAllocateResources();
+    vertex.DeAllocateResources();
 
     glfwTerminate();
     return 0;

@@ -5,11 +5,10 @@
 
 class Vertex {
 public:
+    unsigned int GetVAO() const;
+
     Vertex(unsigned int numberOfVertices, const std::vector<float>& vertices, const std::vector<int>& indices);
-
-    unsigned int getVAO() const;
-
-    void deAllocateResources();
+    void DeAllocateResources();
 
 private:
     unsigned int numberOfVertices {};

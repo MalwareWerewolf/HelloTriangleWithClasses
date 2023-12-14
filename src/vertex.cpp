@@ -24,12 +24,12 @@ Vertex::Vertex(unsigned int numberOfVertices, const std::vector<float>& vertices
     glEnableVertexAttribArray(1);
 }
 
-unsigned int Vertex::getVAO() const
+unsigned int Vertex::GetVAO() const
 {
     return VAO;
 }
 
-void Vertex::deAllocateResources()
+void Vertex::DeAllocateResources()
 {
     glDeleteVertexArrays(numberOfVertices, &VAO);
     glDeleteBuffers(numberOfVertices, &VBO);
