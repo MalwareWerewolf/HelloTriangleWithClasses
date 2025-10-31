@@ -29,9 +29,7 @@
                 "-framework",
                 "CoreFoundation",
                 "-Wno-deprecated",
-                "-lglfw.3.3",
-                "-lboost_system", // Link against the Boost.System library
-                "-lboost_filesystem" // Link against the Boost.Filesystem library
+                "-lglfw.3.3"
             ],
             "options": {
                 "cwd": "${fileDirname}",
