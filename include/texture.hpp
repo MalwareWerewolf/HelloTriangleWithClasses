@@ -7,6 +7,9 @@ public:
     unsigned int texture2;
 
     Texture(const char* texturePath1, const char* texturePath2);
+
+private:
+    unsigned int loadTexture(const char* texturePath);
 };
 
 #endif
